@@ -4,9 +4,9 @@ Get-Content machines.txt | ForEach-Object { $string += $_ + ',' }
 $string = $string.Substring(0, $string.Length - 1) 
 Set-Item WSMan:\localhost\Client\TrustedHosts -Value $string
 
-Get-NetAdapter | ForEach-Object {
-    Write-Host ($_.Name , $_.MacAddress) -Separator ' - '
-}
+# Get-NetAdapter | ForEach-Object {
+#     Write-Host ($_.Name , $_.MacAddress) -Separator ' - '
+# }
 
 $parameters = @{
     ComputerName = (Get-Content Machines.txt)
