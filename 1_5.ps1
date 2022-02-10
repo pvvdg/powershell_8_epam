@@ -1,4 +1,4 @@
-# 4.	ê†·Ë†‡®‚Ï Ø†Ø™„ ≠† ™Æ¨ØÏÓ‚•‡•
+# 5.	–£–¥–∞–ª–∏—Ç—å —à–∞—Ä—É –∏–∑ –ø—Ä–µ–¥—ã–¥—É—â–µ–≥–æ –ø—É–Ω–∫—Ç–∞
 
 Get-Content machines.txt | ForEach-Object { $string += $_ + ',' }
 $string = $string.Substring(0, $string.Length - 1) 
@@ -8,12 +8,7 @@ $parameters = @{
     ComputerName = (Get-Content Machines.txt)
     Credential   = 'k502'
     ScriptBlock  = { 
-        New-Item -Path 'C:\' -Name "Directory" -ItemType "directory"
-        New-SMBShare -Name SharedFolder `
-            -Path 'C:\Directory' `
-            -FullAccess 'k502'
-        Get-SmbShare | Format-Table
+        Remove-SmbShare -Name "SharedFolder"  -Force
     } 
 }
 Invoke-Command @parameters
-
